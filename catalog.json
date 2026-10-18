@@ -1,0 +1,26 @@
+{
+  "title": "给晓晓的小心意",
+  "works": [
+    {
+      "date": "2026-10-18",
+      "slug": "surprise-box",
+      "title": "晓晓的惊喜盒",
+      "category": "惊喜盒",
+      "path": "works/2026-10-18/surprise-box/"
+    },
+    {
+      "date": "2026-10-18",
+      "slug": "garden",
+      "title": "把想念种成花",
+      "category": "小花园",
+      "path": "works/2026-10-18/garden/"
+    },
+    {
+      "date": "2026-10-16",
+      "slug": "love-cat",
+      "title": "我真的特别爱你",
+      "category": "小猫表白",
+      "path": "works/2026-10-16/love-cat/"
+    }
+  ]
+}
