@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>我真的特别爱你 💖</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100svh;background:#faf7f1;color:#49352f;font-family:system-ui,-apple-system,"Microsoft YaHei",sans-serif;display:grid;place-items:center;overflow-x:hidden}main{width:min(92vw,440px);text-align:center;padding:50px 12px}h1{font-size:23px;line-height:1.7;margin:0 0 10px}#hint{height:28px;font-size:23px;margin:0}.pet{width:180px;height:180px;margin:24px auto 30px;animation:bob 2.4s ease-in-out infinite}.actions{display:flex;justify-content:center;align-items:center;gap:18px;min-height:96px;flex-wrap:wrap}button{font:inherit;border:0;border-radius:15px;cursor:pointer;touch-action:manipulation}button:focus-visible{outline:3px solid #ec76a5;outline-offset:5px}#yes{background:#71a64d;color:white;font-weight:700;padding:14px 24px;font-size:18px;transition:font-size .25s,padding .25s}#no{background:#a84b42;color:#fff;padding:13px 20px}#again{background:transparent;color:#917b70;margin-top:30px;font-size:14px}footer{margin-top:35px;font-size:12px;color:#aa9589}.heart{position:fixed;top:-50px;pointer-events:none;z-index:5;animation:fall linear forwards}@keyframes fall{to{transform:translate(var(--drift),110vh) rotate(400deg);opacity:0}}@keyframes bob{50%{transform:translateY(-9px) rotate(3deg)}}@media(prefers-reduced-motion:reduce){.pet{animation:none}#yes{transition:none}.heart{display:none}}
+</style></head>
+<body><main>
+<h1 id="title"></h1><p id="hint">💗</p>
+<!-- 原创矢量小猫，无需下载图片。可以替换整个 SVG 为自己的图片。 -->
+<svg class="pet" viewBox="0 0 200 200" role="img" aria-label="一只抱着爱心的小猫">
+<g stroke="#70504a" stroke-width="5" stroke-linejoin="round"><path fill="#c9ad8a" d="M47 78 42 34 75 51Q100 40 125 51L158 34 153 80Q175 111 152 142Q130 163 100 157Q65 163 46 140Q24 112 47 78Z"/><path fill="#efc6bc" stroke="none" d="m51 48 3 26 17-15zm98 0-3 26-17-15z"/><path fill="#fff5e9" d="M68 146Q49 170 64 183H139Q151 169 132 146"/><path fill="none" d="M65 97q9-12 18 0m34 0q9-12 18 0"/><path fill="#70504a" stroke="none" d="m94 109 12 0-6 7z"/><path fill="none" d="M100 115v5m0 0q-9 10-15 0m15 0q9 10 15 0"/><ellipse cx="58" cy="112" rx="12" ry="7" fill="#e9a39e" stroke="none"/><ellipse cx="142" cy="112" rx="12" ry="7" fill="#e9a39e" stroke="none"/><path fill="#ee7c9b" stroke="#c75c80" d="M100 177 72 153C48 130 81 113 100 137C119 113 152 130 128 153Z"/><path fill="#fff5e9" d="M67 146q-13-4-12 8t20 9m58-17q13-4 12 8t-20 9"/></g></svg>
+<div class="actions"><button id="yes">接受 💖</button><button id="no">拒绝 ❌</button></div>
+<p id="status" role="status" aria-live="polite"></p>
+<button id="again" hidden>再玩一次 ↻</button><footer>把喜欢，认真说给你听</footer>
+</main><script>
+// ===== 在这里修改名字和文案 =====
+const config={name:'晓晓',opening:'我真的特别爱你',success:'我也超级超级爱你！',messages:['再想一下嘛 🥺','再不理我，我要哭了哦 🥹','我的喜欢，都给你啦 💗','好吧，等你愿意再告诉我 💕']};
+const title=document.querySelector('#title'),hint=document.querySelector('#hint'),yes=document.querySelector('#yes'),no=document.querySelector('#no'),again=document.querySelector('#again'),status=document.querySelector('#status');
+let count=0,timers=[];
+function reset(){timers.forEach(clearTimeout);timers=[];document.querySelectorAll('.heart').forEach(e=>e.remove());count=0;title.textContent=config.name+'，'+config.opening;hint.textContent='💗';yes.style.fontSize='18px';yes.style.padding='14px 24px';yes.hidden=false;no.hidden=false;again.hidden=true;status.textContent='';}
+no.addEventListener('click',()=>{count++;title.textContent=config.messages[Math.min(count-1,config.messages.length-1)];hint.textContent=count>=4?'💕':'🥺';yes.style.fontSize=(18+Math.min(count,4)*5)+'px';yes.style.padding=(14+Math.min(count,4)*3)+'px 28px';if(count>=4){no.hidden=true;again.hidden=false;status.textContent='你可以随时关闭，也可以重新开始。';}});
+function hearts(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;for(let i=0;i<65;i++){timers.push(setTimeout(()=>{const e=document.createElement('span');e.className='heart';e.textContent=['💗','💕','💖','♥'][i%4];e.style.left=Math.random()*100+'vw';e.style.fontSize=14+Math.random()*22+'px';e.style.animationDuration=2.5+Math.random()*2+'s';e.style.setProperty('--drift',(Math.random()-.5)*160+'px');document.body.append(e);e.addEventListener('animationend',()=>e.remove(),{once:true});},i*40));}}
+yes.addEventListener('click',()=>{title.textContent=config.name+'，'+config.success;hint.textContent='💖';yes.hidden=true;no.hidden=true;again.hidden=false;status.textContent='隔着距离，也想把你抱紧。';hearts();again.focus();});again.addEventListener('click',()=>{reset();yes.focus();});reset();
+</script><a href="../../../" aria-label="返回心意合集" style="position:fixed;top:12px;left:12px;z-index:10;background:#fffaf3ef;border:1px solid #ddc8b8;border-radius:24px;padding:10px 14px;color:#725749;font:14px -apple-system,sans-serif;text-decoration:none">← 心意合集</a></body></html>
