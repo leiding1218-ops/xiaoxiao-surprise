@@ -2,6 +2,13 @@
   "title": "给晓晓的小心意",
   "works": [
     {
+      "date": "2026-10-19",
+      "slug": "cloud-post",
+      "title": "晓晓的云朵邮局",
+      "category": "云朵邮局",
+      "path": "works/2026-10-19/cloud-post/"
+    },
+    {
       "date": "2026-10-18",
       "slug": "surprise-box",
       "title": "晓晓的惊喜盒",
