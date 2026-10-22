@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#202340">
+  <meta name="robots" content="noindex,nofollow">
+  <title>晓晓，给你一张晚风唱片</title>
+  <style>
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{min-height:100%}
+    body{margin:0;overflow-x:hidden;background:radial-gradient(circle at 50% 0,#454a75 0,#242743 42%,#17192e 100%);color:#fff7ef;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;padding:calc(24px + env(safe-area-inset-top)) 18px calc(26px + env(safe-area-inset-bottom))}
+    .stars,.stars:before,.stars:after{position:fixed;inset:0;pointer-events:none;content:"";background-image:radial-gradient(#fff 1px,transparent 1px);background-size:61px 61px;opacity:.15}.stars:before{transform:translate(17px,23px);background-size:83px 83px;opacity:.12}.stars:after{transform:translate(39px,11px);background-size:107px 107px;opacity:.1}
+    main{position:relative;z-index:1;width:min(100%,480px);margin:auto}
+    .back{display:inline-flex;align-items:center;gap:7px;color:#ddd7eb;text-decoration:none;font-size:14px;padding:10px 4px;margin-bottom:14px}
+    .card{background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.18);border-radius:30px;padding:26px 22px 24px;box-shadow:0 24px 60px rgba(5,7,22,.28);backdrop-filter:blur(10px)}
+    .eyebrow{font-size:12px;letter-spacing:4px;color:#d8cbe2;margin:0 0 11px;text-align:center}
+    h1{font-family:Georgia,"Songti SC",serif;font-size:28px;line-height:1.5;font-weight:500;text-align:center;margin:0 0 6px}
+    .intro{text-align:center;color:#dcd7e9;font-size:14px;line-height:1.8;margin:0 0 22px}
+    .player{position:relative;width:260px;height:238px;margin:0 auto 22px;background:linear-gradient(145deg,#dcb7ae,#b37b7b);border-radius:27px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 16px 35px rgba(10,9,28,.28)}
+    .record{position:absolute;width:184px;height:184px;left:25px;top:25px;border-radius:50%;background:repeating-radial-gradient(circle,#1e2031 0 3px,#292b3f 4px 6px);box-shadow:0 10px 25px rgba(0,0,0,.3);transition:filter .3s}
+    .record:before{content:"";position:absolute;width:72px;height:72px;border-radius:50%;inset:0;margin:auto;background:#d99aa3;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
+    .record:after{content:"♥";position:absolute;inset:0;display:grid;place-items:center;font-size:22px;color:#fff6ed}
+    .record.playing{animation:spin 3.6s linear infinite;filter:brightness(1.08)}
+    .arm{position:absolute;width:91px;height:10px;border-radius:9px;background:#eee4dc;right:1px;top:57px;transform-origin:80px 5px;transform:rotate(38deg);transition:transform .5s ease;box-shadow:0 3px 8px rgba(0,0,0,.2)}
+    .arm:before{content:"";position:absolute;width:26px;height:26px;border-radius:50%;right:-4px;top:-8px;background:#f6eee8}
+    .arm:after{content:"";position:absolute;width:17px;height:24px;border-radius:6px;left:-6px;top:-7px;background:#38394e}
+    .arm.down{transform:rotate(66deg)}
+    .note{position:absolute;opacity:0;font-size:20px;color:#ffe3d6;pointer-events:none}.playing~.note{animation:floatNote 2.2s ease-out infinite}.n1{right:25px;top:15px}.n2{right:2px;top:7px;animation-delay:.75s!important}.n3{right:14px;top:42px;animation-delay:1.4s!important}
+    .message{min-height:104px;display:grid;place-items:center;text-align:center;padding:19px 16px;background:rgba(17,19,42,.34);border:1px solid rgba(255,255,255,.12);border-radius:22px;margin-bottom:17px}
+    .message p{font-family:Georgia,"Songti SC",serif;font-size:18px;line-height:1.9;margin:0;animation:fadeUp .5s ease both}
+    .progress{display:flex;justify-content:center;gap:9px;margin-bottom:17px}.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.22);transition:.3s}.dot.on{width:22px;border-radius:8px;background:#f0b9bc}
+    button{width:100%;border:0;border-radius:18px;padding:16px 18px;background:#f3c0bd;color:#513b4b;font:600 16px/1.2 inherit;box-shadow:0 9px 25px rgba(237,168,171,.22);cursor:pointer}.button:active{transform:translateY(2px)}
+    .hint{text-align:center;color:#bbb7ce;font-size:12px;line-height:1.7;margin:15px 0 0}
+    .final{color:#ffd8d0}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes floatNote{0%{opacity:0;transform:translateY(8px) rotate(-8deg)}30%{opacity:.9}100%{opacity:0;transform:translate(18px,-60px) rotate(9deg)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    @media(max-width:350px){.card{padding-left:15px;padding-right:15px}.player{transform:scale(.92);margin-left:auto;margin-right:auto;margin-top:-6px;margin-bottom:12px}}
+    @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}.record.playing{transform:rotate(12deg)}}
+  </style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <main>
+    <a class="back" href="../../../" aria-label="返回心意合集">← 返回心意合集</a>
+    <section class="card" aria-labelledby="title">
+      <p class="eyebrow">今 日 限 定 · 温 柔 单 曲</p>
+      <h1 id="title">晓晓，给你一张晚风唱片</h1>
+      <p class="intro">把唱针轻轻放下，<br>听一听今天想对你说的话。</p>
+      <div class="player" aria-hidden="true">
+        <div class="record" id="record"></div>
+        <div class="arm" id="arm"></div>
+        <span class="note n1">♪</span><span class="note n2">♫</span><span class="note n3">♪</span>
+      </div>
+      <div class="message" aria-live="polite"><p id="line">唱片还没转起来，<br>但想你这件事已经开始了。</p></div>
+      <div class="progress" aria-label="四句心里话"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <button class="button" id="play" type="button">轻轻放下唱针 ♡</button>
+      <p class="hint" id="hint">每点一次，听见一句新的心里话</p>
+    </section>
+  </main>
+  <script>
+    (function(){
+      var lines=[
+        '今天的风很轻，<br>刚好替我说一句：想你了。',
+        '忙碌的日子里，<br>你一直是我心里温柔的停靠。',
+        '不用每天都闪闪发光，<br>你安心做自己就很好。',
+        '<span class="final">这张唱片会转完，<br>我对你的喜欢不会。</span>'
+      ];
+      var index=0,busy=false;
+      var record=document.getElementById('record'),arm=document.getElementById('arm'),line=document.getElementById('line'),play=document.getElementById('play'),hint=document.getElementById('hint'),dots=document.querySelectorAll('.dot');
+      play.addEventListener('click',function(){
+        if(busy)return;busy=true;
+        record.classList.add('playing');arm.classList.add('down');
+        line.style.animation='none';void line.offsetWidth;line.innerHTML=lines[index];line.style.animation='fadeUp .5s ease both';
+        dots[index].classList.add('on');index++;
+        if(index===lines.length){play.textContent='再听一遍晚风唱片 ↻';hint.textContent='四句心里话，都已经唱给你听了';index=0;setTimeout(function(){dots.forEach(function(d){d.classList.remove('on')})},1200)}else{play.textContent='播放下一句 ♪'}
+        setTimeout(function(){busy=false},520);
+      });
+    })();
+  </script>
+</body>
+</html>
