@@ -9,4 +9,4 @@ function hearts(){if(window.matchMedia&&window.matchMedia('(prefers-reduced-moti
 action.onclick=function(){if(step>=3){hearts();return}note.textContent=words[step];step++;again.hidden=false;if(step===1){leaf.style.opacity='1';leaf.style.transform='translateY(55px) rotate(25deg)';action.textContent='添一点陪伴 🍵'}else if(step===2){tea.style.height='65px';leaf.style.opacity='0';scene.className='scene ready';action.textContent='把这一杯心意端给你 💗'}else{tea.style.height='78px';action.textContent='收下这杯想念 ♡';hearts()}progress.textContent=step===3?'喜欢、陪伴、想念，都在这一杯里':'已泡好 '+step+' / 3 份心意'};
 again.onclick=function(){step=0;leaf.style.opacity='0';leaf.style.transform='';tea.style.height='0';scene.className='scene';note.textContent='晓晓，早安。\n先坐一小会儿，\n今天的想念，我慢慢泡给你。';action.textContent='放一片喜欢的茶叶 🍃';progress.textContent='给自己留一点不赶时间的空隙';again.hidden=true;action.focus()};
 })();
-</script></body></html>
+</script><script src="../../../music.js?v=20261023-1"></script></body></html>

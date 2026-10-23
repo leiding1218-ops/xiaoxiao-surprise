@@ -12,4 +12,4 @@ function hearts(){if(window.matchMedia&&window.matchMedia('(prefers-reduced-moti
 send.onclick=function(){if(busy)return;busy=true;send.disabled=true;send.textContent='想念正在飞向你…';scene.className='scene flying';status.textContent='把喜欢，轻轻送近一点';timer=setTimeout(function(){timer=null;busy=false;send.disabled=false;send.textContent='再送一次想念 ♡';again.hidden=false;status.textContent='想念已送达 💗 你也可以换一张纸条';hearts()},850)};
 again.onclick=function(){resetFlight();note.textContent=notes[selected];send.focus()};
 })();
-</script></body></html>
+</script><script src="../../../music.js?v=20261023-1"></script></body></html>

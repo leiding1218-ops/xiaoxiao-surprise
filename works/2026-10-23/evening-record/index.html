@@ -56,7 +56,7 @@
       <div class="message" aria-live="polite"><p id="line">唱片还没转起来，<br>但想你这件事已经开始了。</p></div>
       <div class="progress" aria-label="四句心里话"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
       <button class="button" id="play" type="button">轻轻放下唱针 ♡</button>
-      <p class="hint" id="hint">每点一次，听见一句新的心里话</p>
+      <p class="hint" id="hint">点一下播放音乐，再慢慢看四句心里话</p>
     </section>
   </main>
   <script>
@@ -71,13 +71,13 @@
       var record=document.getElementById('record'),arm=document.getElementById('arm'),line=document.getElementById('line'),play=document.getElementById('play'),hint=document.getElementById('hint'),dots=document.querySelectorAll('.dot');
       play.addEventListener('click',function(){
         if(busy)return;busy=true;
-        record.classList.add('playing');arm.classList.add('down');
+        
         line.style.animation='none';void line.offsetWidth;line.innerHTML=lines[index];line.style.animation='fadeUp .5s ease both';
         dots[index].classList.add('on');index++;
-        if(index===lines.length){play.textContent='再听一遍晚风唱片 ↻';hint.textContent='四句心里话，都已经唱给你听了';index=0;setTimeout(function(){dots.forEach(function(d){d.classList.remove('on')})},1200)}else{play.textContent='播放下一句 ♪'}
+        if(index===lines.length){play.textContent='再听一遍晚风唱片 ↻';hint.textContent='四句心里话，都已经说给你听了';index=0;setTimeout(function(){dots.forEach(function(d){d.classList.remove('on')})},1200)}else{play.textContent='看下一句心里话 ♡'}
         setTimeout(function(){busy=false},520);
       });
     })();
   </script>
-</body>
+<script src="../../../music.js?v=20261023-1"></script><script>window.addEventListener('xiaoxiao:music',function(event){document.getElementById('record').classList.toggle('playing',event.detail.playing);document.getElementById('arm').classList.toggle('down',event.detail.playing)});</script></body>
 </html>

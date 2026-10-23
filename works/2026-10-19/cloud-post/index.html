@@ -19,4 +19,4 @@ function hearts(button){if(window.matchMedia&&window.matchMedia('(prefers-reduce
 for(var i=0;i<buttons.length;i++){(function(index){buttons[index].onclick=function(){opened[index]=true;for(var k=0;k<buttons.length;k++)buttons[k].setAttribute('aria-pressed',k===index?'true':'false');buttons[index].querySelector('small').textContent='已读 · 可重看';message.textContent=notes[index];var total=opened.filter(function(v){return v}).length;progress.textContent=total===3?'三封信都送到了，想念也送到了 💗':'已拆 '+total+' / 3 封 · 每一封都可以再看';reset.hidden=false;hearts(buttons[index])}})(i)}
 reset.onclick=function(){opened=[false,false,false];for(var k=0;k<buttons.length;k++){buttons[k].setAttribute('aria-pressed','false');buttons[k].querySelector('small').textContent='点击拆信'}message.textContent='收件人：'+name+'\n寄件人：想你的我\n\n有些话不长，\n却想亲口说给你听。';progress.textContent='还有 3 封小小的想念，等你拆开';reset.hidden=true;buttons[0].focus()};
 })();
-</script></body></html>
+</script><script src="../../../music.js?v=20261023-1"></script></body></html>

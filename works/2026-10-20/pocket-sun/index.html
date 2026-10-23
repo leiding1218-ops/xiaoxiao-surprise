@@ -9,4 +9,4 @@ function hearts(){if(window.matchMedia&&window.matchMedia('(prefers-reduced-moti
 button.onclick=function(){if(step>=4){hearts();return}note.textContent=words[step];dots[step].className='dot on';step++;sun.style.transform='scale('+(1+step*.035)+')';halo.style.background='rgba(255,203,103,'+(.12+step*.09)+')';status.textContent=step===4?'四份暖意，都留给晓晓了 💛':'已收下 '+step+' / 4 份暖意';button.textContent=step===4?'把小太阳放进口袋 💛':step===1?'再收一份好心情 ✨':step===2?'还有一份惦记 💌':'看看最后的小心意 💛';again.hidden=false;if(step===4)hearts()};
 again.onclick=function(){step=0;note.textContent='晓晓，早安。\n今天的小太阳，\n想住进你的口袋里。';button.textContent='收下一点暖意 ☀️';status.textContent='轻轻点一下，让暖意靠近你';for(var i=0;i<dots.length;i++)dots[i].className='dot';sun.style.transform='scale(1)';halo.style.background='';again.hidden=true;button.focus()};
 })();
-</script></body></html>
+</script><script src="../../../music.js?v=20261023-1"></script></body></html>
