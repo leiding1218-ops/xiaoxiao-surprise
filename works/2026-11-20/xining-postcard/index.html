@@ -2,100 +2,11 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#172a3a">
-<title>小小，一张从西宁寄来的明信片</title>
-<style>
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background: radial-gradient(ellipse at top, #354656, #172a3a 64%);
-    color: #fff6e6;
-    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
-  }
-  main { max-width: 500px; margin: auto; padding: 42px 22px 32px; }
-  header { margin-bottom: 23px; }
-  .route { margin: 0 0 10px; color: #ffd5a9; font-size: 13px; letter-spacing: .28em; }
-  h1, h2 { font-family: "Songti SC", "SimSun", Georgia, serif; font-weight: 600; }
-  h1 { margin: 0; font-size: 34px; line-height: 1.35; }
-  .postcard { overflow: hidden; border-radius: 20px; background: #fff5e5; color: #383439; box-shadow: 0 18px 46px #0c16258c; }
-  .scene {
-    height: 220px;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(163deg, #657b8e 2%, #a9a2a3 46%, #ecc2a4 80%);
-  }
-  .sun { position: absolute; width: 54px; height: 54px; top: 38px; right: 20%; border-radius: 50%; background: #ffe1ab; box-shadow: 0 0 35px #ffdda28f; }
-  .ridge { position: absolute; inset: auto 0 0; }
-  .far { height: 68%; background: #717987; clip-path: polygon(0 49%, 12% 32%, 21% 44%, 42% 8%, 51% 28%, 59% 21%, 74% 49%, 83% 36%, 100% 58%, 100% 100%, 0 100%); }
-  .near { height: 45%; background: #465d6b; clip-path: polygon(0 29%, 15% 39%, 27% 69%, 42% 75%, 68% 35%, 76% 42%, 92% 33%, 100% 23%, 100% 100%, 0 100%); }
-  .postmark {
-    position: absolute; left: 18px; top: 18px; padding: 7px 9px;
-    border: 1px solid #fff3dfb3; border-radius: 5px; color: #fffaf0;
-    background: #34475c; font-size: 12px; letter-spacing: .15em;
-  }
-  .writing { padding: 24px; }
-  .salutation { margin: 0 0 15px; color: #784c3b; font-size: 14px; }
-  .opening { margin: 0 0 18px; font-size: 17px; line-height: 1.8; }
-  button {
-    min-height: 46px; padding: 10px 17px; border: 0; border-radius: 9px;
-    background: #814935; color: #fff8ed; font: inherit; cursor: pointer;
-  }
-  button:focus-visible, a:focus-visible { outline: 3px solid #bd8062; outline-offset: 4px; }
-  .note { margin: 22px 0 0; padding-top: 18px; border-top: 1px dashed #b99c8b; }
-  .note:focus { outline: none; }
-  .note h2 { margin: 0 0 10px; font-size: 23px; color: #784c3b; }
-  .note p { margin: 0 0 12px; }
-  .note .sign { margin: 18px 0 0; text-align: right; color: #784c3b; font-size: 14px; }
-  footer { margin-top: 24px; text-align: center; }
-  footer a { display: inline-flex; min-height: 44px; align-items: center; color: #ffe0bc; text-underline-offset: .24em; }
-  @media (min-width: 540px) { main { padding-top: 58px; } h1 { font-size: 40px; } }
-  @media (max-width: 360px) { main { padding-inline: 16px; } h1 { font-size: 29px; } .writing { padding: 20px; } }
-</style>
+<meta http-equiv="refresh" content="0; url=../sydney-postcard/">
+<link rel="canonical" href="https://leiding1218-ops.github.io/xiaoxiao-surprise/works/2026-11-20/sydney-postcard/">
+<title>打开明信片</title>
 </head>
-<body>
-<main>
-  <header>
-    <p class="route">从西宁寄给你</p>
-    <h1>小小<br>给你寄张明信片</h1>
-  </header>
-  <article class="postcard" aria-label="寄给小小的明信片">
-    <div class="scene" aria-hidden="true">
-      <div class="sun"></div>
-      <div class="ridge far"></div>
-      <div class="ridge near"></div>
-      <div class="postmark">西宁 · 11 月 20 日</div>
-    </div>
-    <div class="writing">
-      <p class="salutation">收件人　小小</p>
-      <p class="opening">回到西宁以后，才发现跟你在上海待着的那几天，我还没待够。</p>
-      <button type="button" id="flip" aria-controls="note" aria-expanded="false" hidden>翻到背面看看</button>
-      <section class="note" id="note" aria-labelledby="note-title" tabindex="-1">
-        <h2 id="note-title">有点想你了</h2>
-        <p>想你也没什么特别的理由。就是想下次见面的时候，一起吃顿饭，再慢慢走一段路。</p>
-        <p>今天要是碰到什么好玩的事，留着讲给我听。我喜欢听你说这些小事。</p>
-        <p class="sign">从西宁想你的我</p>
-      </section>
-    </div>
-  </article>
-  <footer><a href="../../../">返回心意合集</a></footer>
-</main>
-<script>
-  (function () {
-    var button = document.getElementById('flip');
-    var note = document.getElementById('note');
-    note.hidden = true;
-    button.hidden = false;
-    button.addEventListener('click', function () {
-      var opened = note.hidden;
-      note.hidden = !opened;
-      button.setAttribute('aria-expanded', String(opened));
-      button.textContent = opened ? '翻回正面' : '翻到背面看看';
-      if (opened) note.focus();
-    });
-  }());
-</script>
-</body>
+<body><p><a href="../sydney-postcard/">打开从悉尼寄来的明信片</a></p></body>
 </html>
