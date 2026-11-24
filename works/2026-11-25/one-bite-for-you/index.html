@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#fcf5e6">
+<title>留给你的那一口 · 给晓晓</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; color: #2e4033; background: #fcf5e6; font: 16px/1.7 -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  main { max-width: 480px; margin: auto; padding: 24px 20px 40px; }
+  a { color: #3d5844; }
+  nav { display: flex; align-items: center; justify-content: space-between; }
+  button { color: inherit; font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  a:focus, button:focus { outline: 2px solid #436548; outline-offset: 4px; }
+  .sound { min-height: 44px; border: 1px solid #8d9f85; border-radius: 22px; background: #fffaf0; padding: 0 12px; font-size: 14px; }
+  header { margin: 36px 0 24px; }
+  h1 { font: 700 clamp(30px, 8vw, 44px)/1.25 "Songti SC", "SimSun", serif; margin: 0 0 12px; }
+  header p { margin: 0; color: #5a5d4d; }
+  .table { background: #cfdec5; padding: 16px; border-radius: 38px; }
+  .cloth { padding: 12px; border-radius: 27px; background: repeating-linear-gradient(45deg,#fffaf0,#fffaf0 10px,#f6eddf 10px,#f6eddf 20px); }
+  .plate { display: flex; justify-content: center; align-items: center; gap: 12px; min-height: 108px; border: 6px double #b9c8b0; border-radius: 50%; background: #fffdf7; font-size: 33px; }
+  .plate span { opacity: 0.23; transition: opacity .25s, transform .25s; }
+  .plate .served { opacity: 1; transform: translateY(-3px); }
+  .menu { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 14px; }
+  .menu button { min-height: 48px; border: 1px solid #809477; background: #fffaf0; border-radius: 14px; font-size: 15px; padding: 4px; }
+  .menu button[aria-pressed=true] { background: #35533e; color: #fff; }
+  .note { margin: 20px 0 0; padding: 14px 16px; border-left: 3px solid #5d785e; background: #fffaf0; border-radius: 0 12px 12px 0; min-height: 86px; }
+  .ending { margin-top: 15px; padding: 16px; background: #f3dfbe; border-radius: 15px; }
+  @media (prefers-reduced-motion: reduce) { .plate span { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <nav aria-label="作品导航"><a href="../../../">← 返回合集</a><button hidden class="sound" id="sound" type="button" aria-pressed="false">♫ 开启音乐</button></nav>
+  <header><h1>留给你的那一口</h1><p>晓晓，下次见面想跟你慢慢吃顿饭。今天先挑几样，摆到我们的小桌上。</p></header>
+  <section aria-label="给晓晓的小餐桌">
+    <div class="table" aria-hidden="true"><div class="cloth"><div class="plate"><span>🥟</span><span>🍲</span><span>🍮</span></div></div></div>
+    <div class="menu">
+      <button type="button" aria-pressed="false">摆上小笼包</button>
+      <button type="button" aria-pressed="false">添碗热汤</button>
+      <button type="button" aria-pressed="false">留份布丁</button>
+    </div>
+    <p class="note" id="note" role="status">想先摆哪一样？点一下，就能看到我想对你说的话。</p>
+    <p class="ending" id="ending" hidden>桌子摆好了。下次见面你挑店，我想坐你对面，听你把最近的小事慢慢讲给我听。</p>
+    <noscript><p>晓晓，下次见面你挑店，我想坐你对面，听你把最近的小事慢慢讲给我听。</p></noscript>
+  </section>
+</main>
+<script>
+  (function () {
+    var dishes = document.querySelectorAll('.menu button');
+    var plate = document.querySelectorAll('.plate span');
+    var note = document.getElementById('note');
+    var ending = document.getElementById('ending');
+    var messages = [
+      '给你留一个刚出笼的。先吹一吹，我等你尝了再吃。',
+      '有时候跟你视频，我就想，要是能顺手给你盛碗热汤就好了。',
+      '下次点甜品就拿两把勺，你先挖中间最好吃的那一口。'
+    ];
+    var served = 0;
+    Array.prototype.forEach.call(dishes, function (dish, index) {
+      dish.addEventListener('click', function () {
+        if (dish.getAttribute('aria-pressed') === 'false') {
+          dish.setAttribute('aria-pressed', 'true');
+          plate[index].classList.add('served');
+          served += 1;
+        }
+        note.textContent = messages[index];
+        ending.hidden = served !== dishes.length;
+      });
+    });
+
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    var sound = document.getElementById('sound');
+    var audio;
+    var volume;
+    var timer;
+    var playing = false;
+    var beat = 0;
+    var melody = [261.63, 329.63, 392, 440, 392, 329.63, 293.66, 0, 246.94, 293.66, 349.23, 392, 349.23, 293.66, 261.63, 0];
+    sound.hidden = false;
+
+    function playNote() {
+      var pitch = melody[beat];
+      beat = (beat + 1) % melody.length;
+      if (!pitch) return;
+      var time = audio.currentTime;
+      var tone = audio.createOscillator();
+      var gain = audio.createGain();
+      tone.type = 'sine';
+      tone.frequency.value = pitch;
+      gain.gain.setValueAtTime(0.001, time);
+      gain.gain.exponentialRampToValueAtTime(0.18, time + 0.035);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.75);
+      tone.connect(gain);
+      gain.connect(volume);
+      tone.start(time);
+      tone.stop(time + 0.76);
+    }
+
+    function stopMusic() {
+      clearInterval(timer);
+      if (volume) volume.gain.value = 0;
+      playing = false;
+      sound.setAttribute('aria-pressed', 'false');
+      sound.textContent = '♫ 开启音乐';
+    }
+    sound.addEventListener('click', function () {
+      if (playing) {
+        stopMusic();
+        return;
+      }
+      try {
+        if (!audio) {
+          audio = new AudioContext();
+          volume = audio.createGain();
+          volume.connect(audio.destination);
+        }
+        playing = true;
+        audio.resume().then(function () {
+          if (!playing || document.hidden) return;
+          volume.gain.value = 0.65;
+          sound.setAttribute('aria-pressed', 'true');
+          sound.textContent = '♫ 暂停音乐';
+          playNote();
+          timer = setInterval(playNote, 515);
+        }, stopMusic);
+      } catch (error) {
+        stopMusic();
+      }
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stopMusic();
+    });
+  }());
+</script>
+</body>
+</html>
