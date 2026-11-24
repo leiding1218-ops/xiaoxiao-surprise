@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#f6efe8">
+<title>离开上海一周了 · 给晓晓</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #f6efe8; color: #47302e; font: 16px/1.8 -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+main { max-width: 480px; margin: auto; padding: 24px 20px 44px; }
+nav a { font-size: 14px; color: #633e41; }
+header { margin: 34px 0 22px; }
+h1 { margin: 0 0 8px; font: 600 34px/1.35 "Songti SC", "SimSun", serif; }
+header p { margin: 0; color: #6a5050; }
+.calendar { padding: 18px; background: #593b47; color: #fff7ef; border-radius: 22px; }
+.days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; padding: 0; margin: 0; list-style: none; text-align: center; }
+.days li { display: grid; align-content: center; min-height: 44px; border: 1px solid #a9828a; border-radius: 8px; font: 17px/1 Georgia, serif; }
+.days li:last-child { border-color: #f3cfae; color: #f9d7b8; }
+.calendar.open .days li:last-child { background: #f6d4b6; color: #4c303d; }
+button { width: 100%; min-height: 48px; margin-top: 14px; padding: 8px 14px; background: #ffe8d5; color: #4c303d; border: 0; border-radius: 10px; font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+button:focus, a:focus { outline: 2px solid #a56265; outline-offset: 4px; }
+.note { background: #fffaf2; border: 1px solid #dec6b9; border-radius: 20px; padding: 18px 20px; margin-top: 18px; }
+.note h2 { margin: 0 0 9px; font-size: 22px; }
+.note p { margin: 0 0 12px; }
+.note p:last-child { margin-bottom: 0; }
+.note:focus { outline: 2px solid #a56265; outline-offset: 3px; }
+.note.revealed { animation: unfold .36s ease-out; }
+@keyframes unfold { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .note.revealed { animation: none; } }
+</style>
+</head>
+<body>
+<main>
+  <nav aria-label="作品导航"><a href="../../../">← 返回合集</a></nav>
+  <header>
+    <h1>离开上海一周了</h1>
+    <p>晓晓，今天刚好第七天。有几句话，想让你看看。</p>
+  </header>
+  <div class="calendar" id="calendar">
+    <ol class="days" aria-label="离开上海后的七天">
+      <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li>
+    </ol>
+    <button id="open-note" type="button" aria-controls="note" aria-expanded="true" hidden>翻开第七天</button>
+  </div>
+  <section class="note" id="note" tabindex="-1" aria-labelledby="note-title">
+    <h2 id="note-title">晓晓，我今天特别想你</h2>
+    <p>今天才发现，离开上海刚好一个星期了。刚回悉尼那几天，忙起来也就过去了。今天一有空，就特别想你。</p>
+    <p>有几次想跟你说句小事，才想起来你没坐在我旁边。我最想念的就是那种一转头就能看见你的日子。</p>
+    <p>要是这会儿能见到你，我想先抱抱你，抱一会儿再说话。</p>
+  </section>
+</main>
+<script>
+(function () {
+  var note = document.getElementById('note');
+  var button = document.getElementById('open-note');
+  var calendar = document.getElementById('calendar');
+  note.hidden = true;
+  button.hidden = false;
+  button.setAttribute('aria-expanded', 'false');
+
+  button.addEventListener('click', function () {
+    var show = note.hidden;
+    note.hidden = !show;
+    button.setAttribute('aria-expanded', show ? 'true' : 'false');
+    calendar.classList.toggle('open', show);
+    note.classList.toggle('revealed', show);
+    button.textContent = show ? '合上第七天' : '翻开第七天';
+    if (show) note.focus();
+  });
+}());
+</script>
+</body>
+</html>
