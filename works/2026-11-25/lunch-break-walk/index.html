@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#f1f2e9">
+<title>午饭后，陪你走一段 · 给晓晓</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #f1f2e9; color: #283b35; font: 16px/1.8 -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+main { max-width: 480px; margin: auto; padding: 24px 20px 36px; }
+a { color: #3d5a4c; font-size: 14px; }
+h1 { margin: 28px 0 10px; font-family: "Songti SC", "SimSun", serif; font-size: 34px; line-height: 1.35; }
+header p { margin: 0 0 22px; color: #4a5c51; }
+.park { position: relative; height: 234px; overflow: hidden; isolation: isolate; border-radius: 26px; background: linear-gradient(#e5edda 0 44%, #c4d7bb 44%); }
+.sun { position: absolute; right: 17%; top: 19px; width: 46px; height: 46px; border-radius: 50%; background: #efd899; box-shadow: 0 0 0 10px #f6e8b780; }
+.lawn { position: absolute; bottom: -36px; left: -7%; width: 114%; height: 160px; border-radius: 50% 52% 0 0; background: #afc7a7; }
+.path { position: absolute; width: 126%; height: 69px; bottom: 25px; left: -12%; border: 8px solid #e0dfb8; border-radius: 50%; transform: rotate(-8deg); background: #f4e8c9; }
+.tree { position: absolute; bottom: 100px; left: 13%; width: 64px; height: 89px; }
+.tree::before { content: ""; position: absolute; left: 28px; bottom: 0; width: 6px; height: 47px; border-radius: 8px; background: #847354; }
+.tree::after { content: ""; position: absolute; left: 4px; top: 0; width: 56px; height: 58px; border-radius: 50%; background: #597b63; box-shadow: 13px 14px 0 -7px #739575, -13px 16px 0 -8px #739575; }
+.tree.right { left: auto; right: 12%; bottom: 97px; transform: scale(.76); }
+.bench { position: absolute; width: 40px; height: 18px; right: 13%; bottom: 78px; border: 4px solid #6b6049; border-top-width: 7px; border-radius: 3px; box-shadow: 0 -9px 0 -3px #6b6049; }
+.tracks { position: absolute; left: 13%; bottom: 40px; letter-spacing: 2px; font-size: 24px; white-space: nowrap; transition: left .55s ease, bottom .55s ease; }
+.park[data-stop="1"] .tracks { left: 36%; bottom: 48px; }
+.park[data-stop="2"] .tracks { left: 57%; bottom: 58px; }
+.park[data-stop="3"] .tracks { left: 72%; bottom: 61px; }
+.story { margin: 20px 0 14px; padding: 16px 18px; border: 1px solid #d7dacb; border-radius: 18px; background: #fbfaf4; }
+.story h2 { font-size: 17px; margin: 0; }
+.story p { margin: 4px 0 0; }
+button { width: 100%; min-height: 49px; padding: 8px 14px; border: 0; border-radius: 14px; color: #fff; background: #345746; font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+button:focus, a:focus { outline: 2px solid #466351; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .tracks { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <a href="../../../">← 返回合集</a>
+  <header>
+    <h1>午饭后，陪你走一段</h1>
+    <p>晓晓，昨天听你说，你中午一个人吃饭，饭后又去散了会儿步。我听完就想，下次也想陪你走一段。</p>
+  </header>
+  <div class="park" id="park" data-stop="0" aria-hidden="true">
+    <i class="sun"></i><i class="lawn"></i><i class="path"></i><i class="tree"></i><i class="tree right"></i><i class="bench"></i>
+    <span class="tracks">👣</span>
+  </div>
+  <section class="story" aria-live="polite" aria-atomic="true">
+    <h2 id="stop-title">晓晓，走吧</h2>
+    <p id="stop-text">就当我这会儿在你旁边。你走多慢，我都跟你一样慢。</p>
+  </section>
+  <button type="button" id="next">往前走</button>
+  <noscript><p>下次见面，午饭你挑地方。吃完我们也不急着去哪儿，就慢慢走一段。</p></noscript>
+</main>
+<script>
+(function () {
+  var stops = [
+    ['晓晓，走吧', '就当我这会儿在你旁边。你走多慢，我都跟你一样慢。', '往前走'],
+    ['午饭那一站', '你说起昨天那顿午饭，我其实挺想问，到底吃了什么呀？要是好吃，下次也带我去。', '沿着小路走'],
+    ['饭后那一段路', '我想跟你并排走。路上看到什么，你就指给我看。想安静走一会儿也很好。', '到长椅坐一下'],
+    ['坐下来歇一会儿', '下次见面，午饭你挑地方。吃完我们也不急着去哪儿，就慢慢走一段。', '再走一遍']
+  ];
+  var count = 0;
+  var park = document.getElementById('park');
+  var title = document.getElementById('stop-title');
+  var words = document.getElementById('stop-text');
+  var next = document.getElementById('next');
+  next.addEventListener('click', function () {
+    count = (count + 1) % stops.length;
+    park.setAttribute('data-stop', count);
+    title.textContent = stops[count][0];
+    words.textContent = stops[count][1];
+    next.textContent = stops[count][2];
+  });
+}());
+</script>
+</body>
+</html>
