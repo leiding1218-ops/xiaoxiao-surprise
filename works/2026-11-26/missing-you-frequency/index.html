@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#efe5d3"><title>想念调频 · 给晓晓</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#efe5d3;color:#403b32;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;padding:32px 20px calc(26px + env(safe-area-inset-bottom));min-height:100vh}main{max-width:440px;margin:auto}.eyebrow{font-size:11px;letter-spacing:3px;color:#7a6a51}h1{font-family:Georgia,"Songti SC",serif;font-size:32px;font-weight:500;line-height:1.45;margin:18px 0 12px}.intro{font-size:15px;line-height:1.95;color:#74634e;margin-bottom:27px}.radio{position:relative;background:#b96e45;border:1px solid #935432;border-radius:30px;padding:24px 20px 22px;box-shadow:0 16px 0 -8px #714c31,0 24px 40px #77573125}.antenna{height:28px;width:3px;background:#827a69;position:absolute;right:51px;top:-28px;transform:rotate(18deg);transform-origin:bottom}.antenna:before{content:"";position:absolute;top:-4px;left:-2px;width:7px;height:7px;border-radius:50%;background:#827a69}.label{display:flex;justify-content:space-between;align-items:center;color:#fff2dc;font-size:11px;letter-spacing:2px;margin-bottom:17px}.lamp{width:7px;height:7px;background:#f6cf8b;border-radius:50%;box-shadow:0 0 12px #ffdf92}.screen{background:#303b35;border:4px solid #8a4d30;border-radius:16px;padding:20px;color:#e5d5a7;min-height:176px;position:relative;overflow:hidden}.freq{font-family:Georgia,serif;font-size:42px;letter-spacing:2px;line-height:1.2}.freq small{font:11px sans-serif;letter-spacing:1px}.channel{font-size:13px;line-height:1.7;margin:10px 0 17px;min-height:22px}.bars{height:22px;display:flex;gap:5px;align-items:center}.bars i{display:block;width:4px;height:5px;background:#d7ba76;border-radius:5px}.tuned .bars i{animation:wave 1.4s ease-in-out infinite alternate}.bars i:nth-child(2n){animation-delay:-.5s}.bars i:nth-child(3n){animation-delay:-1s}@keyframes wave{from{height:5px}to{height:20px}}.scale{display:flex;justify-content:space-between;font-size:10px;color:#ffdfb6;margin:20px 2px 6px}.tune-label{display:block;color:#fff2dc;font-size:13px;line-height:1.8;margin:12px 0 7px}input[type=range]{display:block;width:100%;height:44px;margin:0;accent-color:#ffe6af;cursor:pointer;touch-action:pan-y}.hint{color:#ffe7cc;font-size:12px;line-height:1.8;margin:4px 0 17px}.presets{display:flex;gap:8px}.presets button{flex:1;background:#f6e6c7;border:1px solid #fceace;border-radius:11px;padding:12px 2px;min-height:45px;color:#68472c;font-family:inherit;font-size:13px;cursor:pointer}.presets button[aria-pressed=true]{background:#3b453c;color:#f8e5b6;border-color:#3b453c}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #325b4d;outline-offset:4px}.note{margin-top:30px;border:1px solid #d6c6a9;border-radius:22px;background:#faf4e8;padding:24px 22px;min-height:213px}.note h2{font-size:18px;font-weight:500;line-height:1.6;margin:0 0 14px}.note p{font-size:16px;line-height:2;white-space:pre-line;margin:0;color:#6a5844}.collected{font-size:12px;color:#806d53;text-align:center;line-height:1.8;margin:16px 0}.music-box{margin-top:23px;border-top:1px solid #cfbea0;padding-top:18px}.music-box label{display:block;font-size:13px;margin-bottom:10px;color:#6a5844}audio{display:block;width:100%;height:42px}.music-status{font-size:11px;line-height:1.8;color:#817159;margin:8px 0}footer{text-align:center;margin-top:27px;font-size:12px;line-height:2;color:#84735c}footer a{color:#6f624e;text-underline-offset:5px}.date{display:block;margin-top:13px;font-size:10px;letter-spacing:2px}@media(max-width:350px){body{padding-left:14px;padding-right:14px}h1{font-size:28px}.radio{padding:22px 15px}.freq{font-size:37px}}@media(prefers-reduced-motion:reduce){.tuned .bars i{animation:none;height:12px}}
+</style></head>
+<body><main>
+<p class="eyebrow">TODAY'S LITTLE FREQUENCY</p>
+<h1>晓晓，我的想念<br>一直在你这边。</h1>
+<p class="intro">回到悉尼以后，日子照常往前走，<br>我还是常常想起，你在身边的样子。<br>今天把这些想念，藏进一台小收音机。</p>
+<section class="radio" aria-label="想念调频收音机">
+<div class="antenna" aria-hidden="true"></div><div class="label"><span>只 给 晓 晓 的 频 道</span><span class="lamp" aria-hidden="true"></span></div>
+<div class="screen" id="screen"><div class="freq"><span id="frequency">92.0</span> <small>MHz</small></div><p class="channel" id="channel">慢慢转一转，找一句想你</p><div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+<label class="tune-label" for="dial">拖动调频，听见今天的心里话</label>
+<div class="scale" aria-hidden="true"><span>88</span><span>93</span><span>98</span><span>103</span><span>108</span></div>
+<input id="dial" type="range" min="880" max="1080" value="920" step="1" aria-valuetext="92.0 MHz，尚未调到心意频道">
+<p class="hint">也可以直接点下面三个预设频道。</p>
+<div class="presets" aria-label="三个心意频道"><button type="button" id="preset0" aria-pressed="false">96.6 · 声音</button><button type="button" id="preset1" aria-pressed="false">100.6 · 靠近</button><button type="button" id="preset2" aria-pressed="false">104.6 · 日常</button></div>
+</section>
+<section class="note" aria-live="polite" aria-atomic="true"><h2 id="note-title">今天，有三句话想说给你。</h2><p id="note-body">不催你回复，等你有空的时候，<br>慢慢看就好。<br>我只是很想你，想让你知道。</p></section>
+<p class="collected" id="collected">还没调到心意频道 · 共 3 个</p>
+<section class="music-box" aria-label="背景音乐"><label for="music">♫ 配一点轻音乐，陪你慢慢看</label><audio id="music" controls loop playsinline preload="metadata"><source src="../../../assets/soft-evening.mp3" type="audio/mpeg">此浏览器不支持音频播放。</audio><p id="music-status" class="music-status">点播放器的 ▶ 播放音乐；上面的调频只切换文字。</p></section>
+<footer>隔着距离，也想好好靠近你。<br><a href="../../../">返回我们的心意合集</a><span class="date">2026.11.26 · 想念调频</span></footer>
+</main><script>
+(function(){
+'use strict';
+var stations=[
+{value:966,title:'想听你说话',body:'晓晓，我想听你讲今天发生的小事。\n讲到一半笑起来也好，忽然想不起要说什么也好。\n我想念的，就是和你说这些没什么特别的话。'},
+{value:1006,title:'想离你近一点',body:'有时候想你，我会下意识往身边看一眼。\n然后才想起，现在还不能伸手碰到你。\n等再见面，我想先好好抱抱你。'},
+{value:1046,title:'想把日子说给你听',body:'生活里遇到一点新鲜事，我还是会先想到你。\n想讲给你听，也想听听你的。\n隔着距离的日子，我也想认真和你一起过。'}
+];
+var dial=document.getElementById('dial'),seen={},count=0,active=-1;
+function tune(){
+var value=Number(dial.value),found=-1;
+document.getElementById('frequency').textContent=(value/10).toFixed(1);
+for(var i=0;i<stations.length;i++){if(Math.abs(value-stations[i].value)<=2)found=i;}
+for(var j=0;j<stations.length;j++)document.getElementById('preset'+j).setAttribute('aria-pressed',String(j===found));
+document.getElementById('screen').classList.toggle('tuned',found>=0);
+dial.setAttribute('aria-valuetext',(value/10).toFixed(1)+' MHz，'+(found>=0?stations[found].title:'继续调频'));
+document.getElementById('channel').textContent=found>=0?'♡ 已调到 · '+stations[found].title:'慢慢转一转，找一句想你';
+if(found>=0){
+if(!seen[found]){seen[found]=true;count++;}
+if(active!==found){document.getElementById('note-title').textContent=stations[found].title;document.getElementById('note-body').textContent=stations[found].body;}
+}
+active=found;
+document.getElementById('collected').textContent=count===3?'三句想念，都给你收到了 ♡':'已收到 '+count+' / 3 句想念';
+}
+dial.addEventListener('input',tune);dial.addEventListener('change',tune);
+stations.forEach(function(s,i){document.getElementById('preset'+i).addEventListener('click',function(){dial.value=String(s.value);tune();});});
+var music=document.getElementById('music'),status=document.getElementById('music-status');
+music.addEventListener('playing',function(){status.textContent='轻音乐播放中 · 可以随时暂停';});
+music.addEventListener('pause',function(){status.textContent='音乐已暂停 · 想听时再点 ▶';});
+music.addEventListener('error',function(){status.textContent='音乐暂时没有加载出来，可以稍后重试；文字仍可正常查看。';});
+document.addEventListener('visibilitychange',function(){if(document.hidden)music.pause();});
+window.addEventListener('pagehide',function(){music.pause();});
+})();
+</script></body></html>
