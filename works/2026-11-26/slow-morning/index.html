@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f2f3e8">
+  <meta name="description" content="昨晚没睡好，今天就慢一点。给晓晓的一张小纸条。">
+  <title>晓晓，今天慢一点</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f2f3e8; color: #333e36; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    main { max-width: 480px; margin: 0 auto; padding: 36px 22px 24px; }
+    h1 { font: 500 32px/1.45 Georgia, "Songti SC", serif; margin: 0 0 12px; }
+    header p { margin: 0 0 25px; line-height: 1.8; color: #4b5d51; }
+    details { border: 1px solid #cad3bf; border-radius: 24px; background: #fafaf3; }
+    summary { list-style: none; display: block; padding: 13px 13px 0; cursor: pointer; border-radius: 24px; }
+    summary::-webkit-details-marker { display: none; }
+    summary:focus, a:focus { outline: 2px solid #365948; outline-offset: 4px; }
+    .window { display: block; position: relative; overflow: hidden; height: 185px; border: 6px solid #e2dfc8; border-radius: 14px; background: linear-gradient(#c0d5cd, #edf0ca); }
+    .sun { position: absolute; top: 27%; left: 58%; width: 47px; height: 47px; border-radius: 50%; background: #fff2c0; box-shadow: 0 0 32px 8px #fff6d6; }
+    .hill { position: absolute; width: 100%; height: 65%; left: -20%; bottom: -39%; border-radius: 50%; background: #8ba68a; transform: rotate(9deg); }
+    .hill + .hill { left: 33%; bottom: -44%; background: #afbb8e; transform: rotate(-12deg); }
+    .frame { position: absolute; top: 0; bottom: 0; left: 49%; width: 2%; background: #e2dfc8; }
+    .curtain { position: absolute; top: 0; width: 51%; bottom: 0; background: repeating-linear-gradient(90deg, #8ba396 0, #aec0aa 23px, #94a995 45px); transition: transform 950ms ease-in-out; }
+    .left { left: 0; border-radius: 0 0 12px 0; }
+    .right { right: 0; border-radius: 0 0 0 12px; }
+    details[open] .left { transform: translateX(-80%); }
+    details[open] .right { transform: translateX(80%); }
+    .action { display: block; padding: 15px 4px; text-align: center; color: #365948; font-weight: 600; }
+    .close, details[open] .open { display: none; }
+    details[open] .close { display: block; }
+    .note { border-top: 1px solid #dce3d1; padding: 5px 18px 12px; font-size: 17px; line-height: 1.95; }
+    .note p { margin: 13px 0; }
+    .back { display: inline-block; padding: 14px 0; margin-top: 10px; color: #365948; text-underline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) { .curtain { transition: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>晓晓，今天慢一点</h1>
+      <p>昨晚没睡好，今天就对自己温柔一点。</p>
+    </header>
+    <details>
+      <summary>
+        <span class="window" aria-hidden="true">
+          <span class="sun"></span>
+          <span class="hill"></span><span class="hill"></span>
+          <span class="frame"></span>
+          <span class="curtain left"></span><span class="curtain right"></span>
+        </span>
+        <span class="action open">轻轻拉开窗帘</span>
+        <span class="action close">轻轻合上窗帘</span>
+      </summary>
+      <div class="note">
+        <p>老婆，昨晚睡不着肯定不好受。今天能歇就歇一会儿，白天有空、觉得困了，就安心眯一会儿。</p>
+        <p>一下子睡不着也没关系，闭着眼躺一会儿也好。手头的事能晚点做，就晚点做。</p>
+        <p>也不用急着回我。等你歇好了，有精神了，我们再慢慢聊。我在呢。</p>
+      </div>
+    </details>
+    <a class="back" href="../../../">← 返回心意合集</a>
+  </main>
+</body>
+</html>
